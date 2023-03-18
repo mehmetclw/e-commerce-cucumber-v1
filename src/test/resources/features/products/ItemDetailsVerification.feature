@@ -15,17 +15,28 @@ Feature: As a user
   @EC-129
   Scenario: Test the product details from page
     And click the first product on the page
-    Then check the product title
+    Then check the product title "Faded Short Sleeves T-shirt"
     Then check the product details as expected
-    Then check the price as expecteed
-    And click "Add to Cart" button
+    """
+    Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!
+    """
+    Then check the price as "$16.51"
+    And the user clicks the "Add to cart" button
     Then check the text at checkout page as expected
+    """ Product successfully added to your shopping cart
+				"""
 
   @EC-130
   Scenario: Test the product details from open window
     And click the first product's "Quick view" on the page
-    Then check the product title
+    Then check the product title "Faded Short Sleeves T-shirt"
     Then check the product details as expected
-    Then check the price as expecteed
-    And click "Add to Cart" button
+    """
+    Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!
+    """
+    Then check the price as "$16.51"
+    And the user clicks the "Add to cart" button
     Then check the text at checkout page as expected
+    """
+    SHOPPING-CART SUMMARY
+    """
