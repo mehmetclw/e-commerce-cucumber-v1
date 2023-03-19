@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class ItemDetailsVerificationSteps {
+    public static String email;
     @Given("go to home page {string}")
     public void goToHomePage(String url) {
         Driver.getDriver().get(url);
@@ -31,7 +32,7 @@ public class ItemDetailsVerificationSteps {
     @When("the user enters following valid credentials as email address and password:")
     public void theUserEntersFollowingValidCredentialsAsEmailAddressAndPassword(DataTable dt) {
         List<List<String>> credentials = dt.asLists();
-        String email = credentials.get(0).get(1);
+        this.email = credentials.get(0).get(1);
         String password = credentials.get(1).get(1);
         Driver.getDriver().findElement(By.xpath("//input[@id='email']")).sendKeys(email);
         Driver.getDriver().findElement(By.xpath("//input[@id='passwd']")).sendKeys(password);

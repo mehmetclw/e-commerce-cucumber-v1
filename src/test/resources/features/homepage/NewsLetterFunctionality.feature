@@ -1,26 +1,44 @@
 Feature:
-  As an user I want to be able to register for newsletter
+  As an user I want to be able to register for the newsletter
 
   Background:
     Given go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
 
   Scenario:Test the newsletter functionality from main page
     And scroll down the screen
-    And fill the newsletter bar with valid credentials
-    And click on newsletter button
-    Then check the message as expected " Newsletter : You have successfully subscribed to this newsletter."
-    And go to e-mail provider's website
-    Then check the inbox for confirmation e-mail.
-
+    And enter the valid e-mail:
+      | e-mail | fakeshop@trash-mail.com |
+    And the user clicks the enter button
+    Then check the message as expected "Newsletter : You have successfully subscribed to this newsletter."
+    And go to e-mail inbox "https://www.trash-mail.com/inbox/"
+    Then check the inbox for confirmation e-mail "[My Store] Newsletter confirmation"
 
   Scenario: Test the newsletter functionality while creating an account
     And click on "Sign in" link
-    And enter the valid e-mail
-    When click on "Create an Account" button
+    And enter the valid e-mail to create an account:
+      | e-mail | fakeshop@trash-mail.com |
+    And the user clicks the "Create an account" button
     And fill the requirements on the page
-      | First Name | Last Name | Email | Password | Date of Birth |
-      |            |           |       |          |               |
-    And click on the "Sign up for our newsletter!" checkbox
-    And click on "Register" button
-    When Go to your e-mail box
-    Then check the inbox for confirmation e-mail.
+      | First Name | fake   |
+      | Last Name  | shop   |
+      | Password   | 123456 |
+    And click on the -Sign up for our newsletter!- checkbox
+    And the user clicks the "Register" button
+    And go to e-mail inbox "https://www.trash-mail.com/inbox/"
+    Then check the inbox for confirmation e-mail "[My Store] Newsletter confirmation"
+
+  Scenario:Test the newsletter functionality while changing personal settings
+    And click on "Sign in" link
+    When the user enters following valid credentials as email address and password:
+      | e-mail   | fakeshop1@trash-mail.com |
+      | password | 123456                   |
+    And the user clicks the "Sign in" button
+    And the user clicks the "My personal information" button
+    And fill the requirements on the page
+      | Current Password | 123456 |
+      | New Password     | 123456 |
+      | Confirmation     | 123456 |
+    And click on the -Sign up for our newsletter!- checkbox
+    And the user clicks the "Save" button
+    And go to e-mail inbox "https://www.trash-mail.com/inbox/"
+    Then check the inbox for confirmation e-mail "[My Store] Newsletter confirmation"
