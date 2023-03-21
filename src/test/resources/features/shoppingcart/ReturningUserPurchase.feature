@@ -18,7 +18,6 @@ Feature: Returning user purchase
   Scenario:user able to place order successfully
     Then verify the shopping cart have the t-shirt product "Your shopping cart contains: 1 product"
     And check the price of the tshirt is the same as expected price "$16.51"
-    Then scrollDown
     And click proceed to checkout1
     Then Verify that the previously saved address details are pre-filled.
       |expected user street|  expected user city state |
@@ -30,7 +29,7 @@ Feature: Returning user purchase
     When click confirm my order button
     Then the user order is confirmed "Your order on My Store is complete."
 
-@EC-143
+  @EC-143
   Scenario:user able to redirect to confirmation page and get all order details
 
     And click proceed to checkout1

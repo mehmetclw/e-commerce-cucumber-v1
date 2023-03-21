@@ -12,23 +12,26 @@ Feature: Account Management Functionality
 
   @EC-148
   Scenario: Check if user able to see history of order
-    And click "ORDER HISTORY AND DETAILS" on the page
+    And click "Order history and details" on the page
     Then verify that user can see history of order
     """
     Here are the orders you've placed since your account was created.
     """
 
   @EC-149
-  Scenario: Check if user can update password
-    And click "My personal information" on page
-    And enter current password
-    Then enter new password
-    Then enter new password one more time under confirmation
+  Scenario Outline: Check if user can update password
+    And click "<info>" on page
+    And enter "<current password>"
+    Then enter "<new password>"
+    Then enter "<new password>" one more time under confirmation
     When click on "Save"
     And verify if user updated password successfully
     """
     Your personal information has been successfully updated.
     """
+    Examples:
+      | current password | new password | info                      |
+      | 123123           | 23123123     | "My personal information" |
 
   @EC-151
   Scenario: Check if user able to change shipping address

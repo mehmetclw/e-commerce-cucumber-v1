@@ -40,6 +40,10 @@ public class Utility extends FlowsLibrary {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].scrollIntoView({block:\"center\"})", element);
     }
+    public static void scrollByPixel(int number){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,"+number+")");
+    }
 
     public static void waits(long seconds) {
         try {

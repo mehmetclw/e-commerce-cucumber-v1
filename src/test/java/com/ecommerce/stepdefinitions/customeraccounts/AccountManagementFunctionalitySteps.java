@@ -14,9 +14,8 @@ import java.awt.event.WindowAdapter;
 public class AccountManagementFunctionalitySteps extends Utility {
     @And("click {string} on the page")
     public void clickOnThePage(String historyOfMyOrder) {
-        Driver.getDriver().findElement(By.xpath("//span[text()='Order history and details']")).click();
+        Driver.getDriver().findElement(By.xpath("//span[text()='"+historyOfMyOrder+"']")).click();
         waits(1);
-
     }
 
     @Then("verify that user can see history of order")
@@ -24,27 +23,26 @@ public class AccountManagementFunctionalitySteps extends Utility {
         String actualText = Driver.getDriver().findElement(By.xpath("//p[@class='info-title']")).getText();
         Assert.assertEquals("Not MATCHED", actualText, expectedText);
         waits(2);
-        Driver.getDriver().navigate().back();
+        Driver.getDriver().navigate().back(); //TODO ?????? do we need this
     }
 
     @And("click {string} on page")
     public void clickOnPage(String myPersonelInfo) {
         Driver.getDriver().findElement(By.xpath("//span[text()='" + myPersonelInfo + "']")).click();
     }
-
-    @And("enter current password")
-    public void enterCurrentPassword() {
-        Driver.getDriver().findElement(By.xpath("//input[@id='old_passwd']")).sendKeys("123elifnur");
+    @And("enter {string}")
+    public void enter(String currentPassword) {
+        Driver.getDriver().findElement(By.xpath("//input[@id='old_passwd']")).sendKeys(currentPassword);
     }
 
-    @Then("enter new password")
-    public void enterNewPassword() {
-        Driver.getDriver().findElement(By.xpath("//input[@id='passwd']")).sendKeys("123elifnur");
+    @And("enter {string}")
+    public void enterCurrentPassword(String newPassword) {
+        Driver.getDriver().findElement(By.xpath("//input[@id='passwd']")).sendKeys(newPassword);
     }
 
-    @Then("enter new password one more time under confirmation")
-    public void enterNewPasswordOneMoreTimeUnderConfirmation() {
-        Driver.getDriver().findElement(By.xpath("//input[@id='confirmation']")).sendKeys("123elifnur");
+    @Then("enter {string} one more time under confirmation")
+    public void enterNewPasswordOneMoreTimeUnderConfirmation(String newPassword) {
+        Driver.getDriver().findElement(By.xpath("//input[@id='confirmation']")).sendKeys(newPassword);
         waits(2);
     }
 
@@ -88,4 +86,6 @@ public class AccountManagementFunctionalitySteps extends Utility {
         String actualText = Driver.getDriver().findElement(By.xpath("//span[normalize-space()='12 Street']")).getText();
         Assert.assertEquals("Text didn't match", actualText, expectedTitle);
     }
+
+
 }

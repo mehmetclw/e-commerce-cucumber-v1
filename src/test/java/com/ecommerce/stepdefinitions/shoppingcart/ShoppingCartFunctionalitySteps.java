@@ -27,17 +27,17 @@ public class ShoppingCartFunctionalitySteps extends Utility {
 
     @And("click the first product on page")
     public void clickTheFirstProductOnPage() {
-        WebElement clickTshirtLink = Driver.getDriver().findElement(By.xpath("//img[@src='https://ecommerce.yosemiteint.com/prestashop/img/p/1/1-home_default.jpg']"));
-        clickTshirtLink.click();
+        WebElement clickTShirtLink = Driver.getDriver().findElement(By.xpath("//img[@src='https://ecommerce.yosemiteint.com/prestashop/img/p/1/1-home_default.jpg']"));
+        clickTShirtLink.click();
 
     }
 
     @When("choose number of tshirt, color and size")
     public void chooseNumberOfTshirtColorAndSize() {
         Driver.getDriver().switchTo().frame(0);
-        WebElement chooseNumberOfTshirt = Driver.getDriver().switchTo().activeElement().findElement(By.xpath("//input[@id='quantity_wanted']"));
-        chooseNumberOfTshirt.clear();
-        chooseNumberOfTshirt.sendKeys("2");
+        WebElement chooseNumberOfTShirt = Driver.getDriver().switchTo().activeElement().findElement(By.xpath("//input[@id='quantity_wanted']"));
+        chooseNumberOfTShirt.clear();
+        chooseNumberOfTShirt.sendKeys("2");
         Select select = new Select(Driver.getDriver().findElement(By.xpath("//select[@id='group_1']")));
         select.selectByIndex(1);
         Driver.getDriver().findElement(By.xpath("//a[@id='color_13']")).click();
@@ -48,11 +48,6 @@ public class ShoppingCartFunctionalitySteps extends Utility {
     public void clickLink(String addToCart) {
         Driver.getDriver().findElement(By.xpath("//span[text()='" + addToCart + "']")).click();
         waits(2);
-//        System.out.println("iframe = " + iframe);
-//        if (iframe != null) {
-//            Driver.getDriver().switchTo().defaultContent();
-//            Driver.getDriver().switchTo().frame(Driver.getDriver().findElement(By.cssSelector(".fancybox-iframe")));
-//        }
     }
 
     @Then("verify if the product added correctly")
@@ -63,15 +58,9 @@ public class ShoppingCartFunctionalitySteps extends Utility {
         waits(3);
     }
 
-    @And("scroll down")
-    public void scrollDown() {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0,1000)");
-        waits(1);
-    }
-
     @And("click the third product on page")
     public void clickTheThirdProductOnPage() {
+        Utility.scrollByPixel(1000);
         List<WebElement> clickThirdProduct = Driver.getDriver().findElements(By.xpath("//h5[@itemprop='name']//a"));
         clickThirdProduct.get(2).click();
     }
@@ -96,14 +85,11 @@ public class ShoppingCartFunctionalitySteps extends Utility {
     }
 
     @Then("verify if the total price is matching with price that shown on website")
-    public void verifyIfTheTotalPriceIsMatchingWithPriceThatShownOnWebsite(String price) {
-        Boolean checkTotalCalculation = Driver.getDriver().findElement(By.xpath("//span[@id='total_price_without_tax']")).isDisplayed();
-        Assert.assertTrue(checkTotalCalculation);
-        System.out.println("Total price without tax is $26");
+    public void verifyIfTheTotalPriceIsMatchingWithPriceThatShownOnWebsite(String expectedPrice) {
+        Utility.scrollByPixel(1000);
+        WebElement checkTotalCalculation = Driver.getDriver().findElement(By.xpath("//span[@id='total_price_without_tax']"));
+        Assert.assertEquals("sfsdfds",expectedPrice,checkTotalCalculation);
+        System.out.println("Total price without tax is "+checkTotalCalculation);
         waits(1);
-
-
     }
-
-
 }

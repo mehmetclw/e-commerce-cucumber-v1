@@ -29,14 +29,15 @@ public class ReturningUserPurchaseSteps {
     @Then("verify the shopping cart have the t-shirt product {string}")
     public void verifyTheShoppingCartHaveTheTShirtProduct(String expectedShoppingSummary) {
         WebElement shoppingCartSummary=Driver.getDriver().findElement(By.xpath("//span[@class='heading-counter']"));
-
-        Assert.assertEquals("shopping cart doesn't have your product",expectedShoppingSummary,shoppingCartSummary.getText());
+        Assert.assertEquals("shopping cart doesn't have your product",
+                expectedShoppingSummary,shoppingCartSummary.getText());
     }
 
     @And("check the price of the tshirt is the same as expected price {string}")
     public void checkThePriceOfTheTshirtIsTheSameAsExpectedPrice(String expectedTotal) {
         WebElement totalCart=Driver.getDriver().findElement(By.cssSelector("#total_price_without_tax"));
-        Assert.assertEquals("TOTAL DOESN'T MATCH",expectedTotal,totalCart.getText());
+        String actualTotalValue=totalCart.getText();
+        Assert.assertEquals("TOTAL DOESN'T MATCH",expectedTotal,actualTotalValue);
     }
 
     @Then("Verify that the previously saved address details are pre-filled.")
@@ -44,20 +45,24 @@ public class ReturningUserPurchaseSteps {
         List<List<String>> credentials = dt.asLists();
         String expectedUserStreet= credentials.get(1).get(0);
         String expectedUserCityState=credentials.get(1).get(1);
-        WebElement userStreetAddress=Driver.getDriver().findElement(By.xpath("//ul[@id='address_delivery']//li[@class='address_address1 address_address2']"));
-        WebElement userCityStateAddress=Driver.getDriver().findElement(By.cssSelector("ul[id='address_delivery'] li[class='address_city address_state_name address_postcode']"));
+        WebElement userStreetAddress=Driver.getDriver().findElement(
+                By.xpath("//ul[@id='address_delivery']//li[@class='address_address1 address_address2']"));
+        WebElement userCityStateAddress=Driver.getDriver().findElement(
+                By.cssSelector("ul[id='address_delivery'] li[class='address_city address_state_name address_postcode']"));
         Assert.assertEquals("the user Street is not valid",expectedUserStreet,userStreetAddress.getText());
         Assert.assertEquals("the user city and state not valid",expectedUserCityState,userCityStateAddress.getText());
     }
 
     @Then("check the agree terms box")
     public void checkTheAgreeTermsBox() {
-        Driver.getDriver().findElement(By.xpath("//input[@id='cgv']")).click();
+        Driver.getDriver().findElement(
+                By.xpath("//input[@id='cgv']")).click();
     }
 
     @And("select pay by check")
     public void selectPayByCheck() {
-        Driver.getDriver().findElement(By.xpath("//a[@title='Pay by check.']")).click();
+        Driver.getDriver().findElement(
+                By.xpath("//a[@title='Pay by check.']")).click();
     }
 
     @When("click confirm my order button")
@@ -67,9 +72,9 @@ public class ReturningUserPurchaseSteps {
 
     @Then("the user order is confirmed {string}")
     public void theUserOrderIsConfirmed(String expectedConfirmMessage) {
-        WebElement confirmMessage= Driver.getDriver().findElement(By.xpath("//p[@class=\"alert alert-success\"]"));
+        WebElement confirmMessage= Driver.getDriver().findElement(
+                By.xpath("//p[@class=\"alert alert-success\"]"));
         Assert.assertEquals("Confirmation Message not displayed",expectedConfirmMessage,confirmMessage.getText());
-
     }
 
     @When("click on confirm my order button")
@@ -90,7 +95,8 @@ public class ReturningUserPurchaseSteps {
 
     @When("click Order details button")
     public void clickOrderDetailsButton() {
-        Driver.getDriver().findElement(By.xpath("//tr[contains(@class,'first_item')]//span[contains(text(),'Details')]")).click();
+        Driver.getDriver().findElement(
+                By.xpath("//tr[contains(@class,'first_item')]//span[contains(text(),'Details')]")).click();
     }
 
     @Then("user able to see his previous order details {string}")
@@ -99,16 +105,12 @@ public class ReturningUserPurchaseSteps {
         Assert.assertEquals("order history not displayed",expectedOrderHistory,orderHistory);
     }
 
-    @Then("scrollDown")
-    public void scrollDown() {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0,1000)");
-    }
-
     @And("click proceed to checkout1")
     public void clickProceedToCheckout1() {
-        Driver.getDriver().findElement(By.cssSelector("a[class='button btn btn-default standard-checkout button-medium'] span")).click();
-
+       WebElement element= Driver.getDriver().findElement(
+                By.cssSelector("a[class='button btn btn-default standard-checkout button-medium'] span"));
+        Utility.scrollTo(element);
+        element.click();
     }
 
     @And("click proceed to checkout2")
@@ -118,7 +120,8 @@ public class ReturningUserPurchaseSteps {
 
     @And("click proceed to checkout3")
     public void clickProceedToCheckout3() {
-        Driver.getDriver().findElement(By.xpath("//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]")).click();
+        Driver.getDriver().findElement(
+                By.xpath("//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]")).click();
     }
 
 }
