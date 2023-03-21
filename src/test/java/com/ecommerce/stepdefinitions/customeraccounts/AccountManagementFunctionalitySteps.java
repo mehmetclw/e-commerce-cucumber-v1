@@ -14,7 +14,8 @@ import java.awt.event.WindowAdapter;
 public class AccountManagementFunctionalitySteps extends Utility {
     @And("click {string} on the page")
     public void clickOnThePage(String historyOfMyOrder) {
-        Driver.getDriver().findElement(By.xpath("//span[text()='"+historyOfMyOrder+"']")).click();
+        WebElement historyOfOrder=Driver.getDriver().findElement(By.xpath("//span[text()='" + historyOfMyOrder + "']"));
+        historyOfOrder.click();
         waits(1);
     }
 
@@ -23,32 +24,38 @@ public class AccountManagementFunctionalitySteps extends Utility {
         String actualText = Driver.getDriver().findElement(By.xpath("//p[@class='info-title']")).getText();
         Assert.assertEquals("Not MATCHED", actualText, expectedText);
         waits(2);
-        Driver.getDriver().navigate().back(); //TODO ?????? do we need this
     }
 
     @And("click {string} on page")
     public void clickOnPage(String myPersonelInfo) {
-        Driver.getDriver().findElement(By.xpath("//span[text()='" + myPersonelInfo + "']")).click();
-    }
-    @And("enter {string}")
-    public void enter(String currentPassword) {
-        Driver.getDriver().findElement(By.xpath("//input[@id='old_passwd']")).sendKeys(currentPassword);
+        WebElement myInfo= Driver.getDriver().findElement(By.xpath("//span[text()='" + myPersonelInfo + "']"));
+        myInfo.click();
     }
 
+
     @And("enter {string}")
-    public void enterCurrentPassword(String newPassword) {
-        Driver.getDriver().findElement(By.xpath("//input[@id='passwd']")).sendKeys(newPassword);
+    public void enter(String currentPassword) {
+        WebElement enterCurrentPassword=Driver.getDriver().findElement(By.xpath("//input[@id='old_passwd']"));
+        enterCurrentPassword.sendKeys(currentPassword);
+    }
+
+    @Then("enter {string} on page")
+    public void enterOnPage(String newPassword) {
+        WebElement enterNewPassword=Driver.getDriver().findElement(By.xpath("//input[@id='passwd']"));
+        enterNewPassword.sendKeys(newPassword);
     }
 
     @Then("enter {string} one more time under confirmation")
-    public void enterNewPasswordOneMoreTimeUnderConfirmation(String newPassword) {
-        Driver.getDriver().findElement(By.xpath("//input[@id='confirmation']")).sendKeys(newPassword);
+    public void enterOneMoreTimeUnderConfirmation(String newPassword) {
+        WebElement enterNewPassword=Driver.getDriver().findElement(By.xpath("//input[@id='confirmation']"));
+        enterNewPassword.sendKeys(newPassword);
         waits(2);
     }
 
     @When("click on {string}")
     public void clickOn(String saveButton) {
-        Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + saveButton + "']")).click();
+        WebElement clickSave=Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + saveButton + "']"));
+        clickSave.click();
     }
 
     @And("verify if user updated password successfully")
@@ -62,13 +69,15 @@ public class AccountManagementFunctionalitySteps extends Utility {
 
     @And("click on the {string} link")
     public void clickOnTheLink(String myAddress) {
-        Driver.getDriver().findElement(By.xpath("//span[text()='My addresses']")).click();
+       WebElement clickMyAddress= Driver.getDriver().findElement(By.xpath("//span[text()='My addresses']"));
+       clickMyAddress.click();
         waits(2);
     }
 
     @Then("click on {string} button")
     public void clickOnButton(String updateButtton) {
-        Driver.getDriver().findElement(By.xpath("//ul[@class='first_item item box']//span[text()='Update']")).click();
+        WebElement update=Driver.getDriver().findElement(By.xpath("//ul[@class='first_item item box']//span[text()='Update']"));
+        update.click();
         waits(2);
     }
 
