@@ -2,7 +2,7 @@ Feature:Shopping Cart Functionality
   As a user I want to log in
   Add the product to my cart successfully
 
-  Background:
+  Background:To sign in with credentials
     Given go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
     And click on "Sign in" link
     When the user fills requirement fields with valid credentials
@@ -15,6 +15,8 @@ Feature:Shopping Cart Functionality
   Scenario: Add the product to shopping cart
     And click the first product on page
     When choose number of tshirt, color and size
+ #     | Qty | color  | size |
+  #    | 2   | orange | M    |
     And click "Add to cart" link
     Then verify if the product added correctly
     """
@@ -23,7 +25,6 @@ Feature:Shopping Cart Functionality
 
   @EC-146
   Scenario: Remove the added product to shopping cart
-    And scroll down
     Then click the third product on page
     And click "Add to cart" link
     And click "Proceed to checkout" button
@@ -37,8 +38,9 @@ Feature:Shopping Cart Functionality
   Scenario: Verify if added product is calculated correctly
     And click the first product on page
     When choose number of tshirt, color and size
+     #     | Qty | color  | size |
+     #    | 2   | orange | M    |
     And  click "Add to cart" link
-    And scroll down
     Then verify if the total price is matching with price that shown on website
     """
     $33.02
