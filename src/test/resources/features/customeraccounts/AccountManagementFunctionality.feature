@@ -20,9 +20,9 @@ Feature: Account Management Functionality
 
   @EC-149
   Scenario Outline: Check if user can update password
-    And click "<info>" on page
+    And click "<information>" on page
     And enter "<current password>"
-    Then enter "<new password>"
+    Then enter "<new password>" on page
     Then enter "<new password>" one more time under confirmation
     When click on "Save"
     And verify if user updated password successfully
@@ -30,15 +30,13 @@ Feature: Account Management Functionality
     Your personal information has been successfully updated.
     """
     Examples:
-      | current password | new password | info                      |
-      | 123123           | 23123123     | "My personal information" |
+      | information             | current password | new password |
+      | My personal information | 123elifnur       | 123elifnur   |
 
   @EC-151
   Scenario: Check if user able to change shipping address
     And click on the "MY ADDRESS" link
-    And scroll down
     Then click on "update" button
-    And scroll down
     When enter new address under address
     Then click on "Save"
     And verify that user changed shipping address successfully

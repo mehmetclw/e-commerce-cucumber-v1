@@ -15,8 +15,8 @@ Feature:Shopping Cart Functionality
   Scenario: Add the product to shopping cart
     And click the first product on page
     When choose number of tshirt, color and size
- #     | Qty | color  | size |
-  #    | 2   | orange | M    |
+      | Qty | color  | size |
+      | 2   | orange | M    |
     And click "Add to cart" link
     Then verify if the product added correctly
     """
@@ -38,11 +38,9 @@ Feature:Shopping Cart Functionality
   Scenario: Verify if added product is calculated correctly
     And click the first product on page
     When choose number of tshirt, color and size
-     #     | Qty | color  | size |
-     #    | 2   | orange | M    |
+      | Qty | color  | size |
+      | 2   | orange | M    |
     And  click "Add to cart" link
-    Then verify if the total price is matching with price that shown on website
-    """
-    $33.02
-    """
+    Then verify if the total price is "$33.02" matching with price that shown on website
+
 
