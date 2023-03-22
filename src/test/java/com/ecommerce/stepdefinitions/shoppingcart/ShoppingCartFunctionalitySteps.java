@@ -27,32 +27,31 @@ public class ShoppingCartFunctionalitySteps extends Utility {
 
     @And("click the first product on page")
     public void clickTheFirstProductOnPage() {
-        WebElement clickTshirtLink = Driver.getDriver().findElement(By.xpath("//img[@src='https://ecommerce.yosemiteint.com/prestashop/img/p/1/1-home_default.jpg']"));
-        clickTshirtLink.click();
-
+        WebElement clickTShirtLink = Driver.getDriver().findElement(By.xpath("//img[@src='https://ecommerce.yosemiteint.com/prestashop/img/p/1/1-home_default.jpg']"));
+        clickTShirtLink.click();
     }
 
     @When("choose number of tshirt, color and size")
-    public void chooseNumberOfTshirtColorAndSize() {
+    public void chooseNumberOfTshirtColorAndSize(DataTable dt) {
+        List<List<String>> customizeProduct = dt.asLists();
+        String qyt = customizeProduct.get(1).get(0);
+        String password = customizeProduct.get(1).get(1);
+        String size = customizeProduct.get(1).get(2);
         Driver.getDriver().switchTo().frame(0);
-        WebElement chooseNumberOfTshirt = Driver.getDriver().switchTo().activeElement().findElement(By.xpath("//input[@id='quantity_wanted']"));
-        chooseNumberOfTshirt.clear();
-        chooseNumberOfTshirt.sendKeys("2");
-        Select select = new Select(Driver.getDriver().findElement(By.xpath("//select[@id='group_1']")));
-        select.selectByIndex(1);
+        WebElement chooseNumberOfTShirt = Driver.getDriver().switchTo().activeElement().findElement(By.xpath("//input[@id='quantity_wanted']"));
+        chooseNumberOfTShirt.clear();
+        chooseNumberOfTShirt.sendKeys("2");
+        WebElement select = Driver.getDriver().findElement(By.xpath("//select[@id='group_1']"));
+        selectElementByIndex(select, 1);
         Driver.getDriver().findElement(By.xpath("//a[@id='color_13']")).click();
         waits(3);
     }
 
     @And("click {string} link")
     public void clickLink(String addToCart) {
-        Driver.getDriver().findElement(By.xpath("//span[text()='" + addToCart + "']")).click();
+        WebElement addCart = Driver.getDriver().findElement(By.xpath("//span[text()='" + addToCart + "']"));
+        addCart.click();
         waits(2);
-//        System.out.println("iframe = " + iframe);
-//        if (iframe != null) {
-//            Driver.getDriver().switchTo().defaultContent();
-//            Driver.getDriver().switchTo().frame(Driver.getDriver().findElement(By.cssSelector(".fancybox-iframe")));
-//        }
     }
 
     @Then("verify if the product added correctly")
@@ -63,47 +62,40 @@ public class ShoppingCartFunctionalitySteps extends Utility {
         waits(3);
     }
 
-    @And("scroll down")
-    public void scrollDown() {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0,1000)");
-        waits(1);
-    }
-
     @And("click the third product on page")
     public void clickTheThirdProductOnPage() {
+        Utility.scrollByPixel(1000);
         List<WebElement> clickThirdProduct = Driver.getDriver().findElements(By.xpath("//h5[@itemprop='name']//a"));
         clickThirdProduct.get(2).click();
     }
 
     @And("click {string} button")
     public void clickButton(String proceedToCart) {
-        Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + proceedToCart + "']")).click();
+        WebElement proceedCart = Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + proceedToCart + "']"));
+        proceedCart.click();
         waits(2);
     }
 
     @And("click {string} icon")
     public void clickIcon(String delete) {
-        Driver.getDriver().findElement(By.xpath("//i[@class='icon-trash']")).click();
+        WebElement deleteButton = Driver.getDriver().findElement(By.xpath("//i[@class='icon-trash']"));
+        deleteButton.click();
         waits(1);
     }
 
     @Then("verify if product removed successfully")
     public void verifyIfProductRemovedSuccessfully(String expectedCartTitle) {
         String actualCartTitle = Driver.getDriver().findElement(By.xpath("//p[@class='alert alert-warning']")).getText();
-        Assert.assertEquals("DID NOT match", actualCartTitle, expectedCartTitle);
+        Assert.assertEquals("DID NOT match", expectedCartTitle, actualCartTitle);
         waits(2);
     }
 
-    @Then("verify if the total price is matching with price that shown on website")
-    public void verifyIfTheTotalPriceIsMatchingWithPriceThatShownOnWebsite(String price) {
-        Boolean checkTotalCalculation = Driver.getDriver().findElement(By.xpath("//span[@id='total_price_without_tax']")).isDisplayed();
-        Assert.assertTrue(checkTotalCalculation);
-        System.out.println("Total price without tax is $26");
+    @Then("verify if the total price is {string} matching with price that shown on website")
+    public void verifyIfTheTotalPriceIsMatchingWithPriceThatShownOnWebsite(String expectedPrice) {
+        scrollByPixel(1000);
+        String actualPrice = Driver.getDriver().findElement(By.xpath("//span[@id='total_price_without_tax']")).getText();
+        Assert.assertEquals("did not match", expectedPrice, actualPrice);
+        System.out.println("Total price without tax is " + actualPrice);
         waits(1);
-
-
     }
-
-
 }

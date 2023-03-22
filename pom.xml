@@ -67,6 +67,16 @@
             <artifactId>commons-csv</artifactId>
             <version>1.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.devcon5</groupId>
+            <artifactId>pageobjects</artifactId>
+            <version>0.3</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
