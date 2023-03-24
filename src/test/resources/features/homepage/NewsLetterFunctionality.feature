@@ -4,6 +4,7 @@ Feature:
   Background:
     Given go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
 
+  @EC-131
   Scenario:Test the newsletter functionality from main page
     And scroll down the screen
     And enter the valid e-mail:
@@ -13,6 +14,7 @@ Feature:
     And go to e-mail inbox "https://www.trash-mail.com/inbox/"
     Then check the inbox for confirmation e-mail "[My Store] Newsletter confirmation"
 
+  @EC-132
   Scenario: Test the newsletter functionality while creating an account
     And click on "Sign in" link
     And enter the valid e-mail to create an account:
@@ -27,6 +29,7 @@ Feature:
     And go to e-mail inbox "https://www.trash-mail.com/inbox/"
     Then check the inbox for confirmation e-mail "[My Store] Newsletter confirmation"
 
+  @EC-133
   Scenario:Test the newsletter functionality while changing personal settings
     And click on "Sign in" link
     When the user enters following valid credentials as email address and password:

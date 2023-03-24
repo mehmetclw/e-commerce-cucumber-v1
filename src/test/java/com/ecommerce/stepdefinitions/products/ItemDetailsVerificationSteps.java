@@ -28,14 +28,7 @@ public class ItemDetailsVerificationSteps extends TestBase {
 
     @And("click on {string} link")
     public void clickOnLink(String value) {
-        switch (value) {
-            case  "Sign In":
-                getAppLibrary().getPage().getIdv().clickOnLinkSignIn();
-                break;
-            case "Women":
-                getAppLibrary().getPage().getIdv().clickOnLinkWomen();
-                break;
-        }
+        getAppLibrary().getPage().getIdv().clickOnLink(value);
     }
 
     @When("the user enters following valid credentials as email address and password:")
@@ -47,9 +40,9 @@ public class ItemDetailsVerificationSteps extends TestBase {
     }
 
     @And("the user clicks the {string} button")
-    public void theUserClicksTheButton(String singInButton) { //abc
+    public void theUserClicksTheButton(String button) {
         getAppLibrary().getPage().getIdv().iFrameHandle(iframe);
-        getAppLibrary().getPage().getIdv().theUserClicksTheButton();
+        getAppLibrary().getPage().getIdv().theUserClicksTheButton(button);
     }
 
     @And("click the first product on the page")
@@ -76,7 +69,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     @Then("check the price as {string}")
     public void checkThePriceAsExpecteed(String expectedPrice) {
         getAppLibrary().getPage().getIdv().iFrameHandle(iframe);
-
         String actualPrice = getAppLibrary().getPage().getIdv().checkThePrice();
         Assert.assertEquals("Failed", expectedPrice, actualPrice);
     }
@@ -85,8 +77,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     public void checkTheTextAtCheckoutPageAsExpected(String expectedResult) {
         if (iframe != null) {
             String actualResult = getAppLibrary().getPage().getIdv().checkTheText();
-            System.out.println("expectedResult = " + expectedResult);
-            System.out.println("actualResult = " + actualResult);
             Assert.assertTrue("Failed", actualResult.contains(expectedResult));
         } else {
             String actualResult = getAppLibrary().getPage().getIdv().checkoutCartText();
@@ -98,6 +88,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     public void clickTheFirstProductSOnThePage(String quickView) {
         this.iframe = quickView;
         getAppLibrary().getPage().getIdv().clickTheFirstProductSOnThePage();
-        Utility.waits(2);
+        Utility.waits(1);
     }
 }
