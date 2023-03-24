@@ -1,21 +1,14 @@
 package com.ecommerce.pages.products;
 
 import com.ecommerce.elements.products.ItemDetailsVerificationElements;
-import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
-import org.openqa.selenium.By;
 
-import java.util.List;
 
 public class ItemDetailsVerificationPages extends Utility {
     ItemDetailsVerificationElements idve = new ItemDetailsVerificationElements();
 
-    public void clickOnLinkSignIn() {
-        clickElement(idve.singIn);
-    }
-
-    public void clickOnLinkWomen() {
-        clickElement(idve.women);
+    public void clickOnLink(String value) {
+        clickElementByLinkText(value);
     }
 
     public void enterUserCredentials(String email, String password) {
@@ -30,13 +23,13 @@ public class ItemDetailsVerificationPages extends Utility {
         }
     }
 
-    public void theUserClicksTheButton() {
-        clickElement(idve.button);
-    }
+    public void theUserClicksTheButton(String button) {
+        clickElementButton(button);
+        }
 
     public void clickTheFirstProductOnThePage() {
         clickElement(idve.products.get(0));
-        waits(3);
+        waits(1);
     }
 
     public String checkTheProductTitle() {
@@ -60,9 +53,9 @@ public class ItemDetailsVerificationPages extends Utility {
     }
 
     public void clickTheFirstProductSOnThePage() {
-        hoverOver(idve.products.get(0), 2);
+        hoverOver(idve.products.get(0), 1);
         clickElement(idve.quickView);
-        waits(2);
+        waits(1);
     }
 
 
