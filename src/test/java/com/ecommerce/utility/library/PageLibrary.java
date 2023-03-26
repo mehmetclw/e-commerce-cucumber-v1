@@ -4,6 +4,7 @@ package com.ecommerce.utility.library;
 import com.ecommerce.pages.customeraccounts.AccountManagementFunctionalityPages;
 import com.ecommerce.pages.homepage.SearchFunctionalityPages;
 import com.ecommerce.pages.products.ItemDetailsVerificationPages;
+import com.ecommerce.pages.shoppingcart.ReturningUserPurchasePages;
 
 public class PageLibrary {
     /*    private UserRegistrationPages urp;
@@ -11,6 +12,7 @@ public class PageLibrary {
         private TestTheNavigationPages tnp;
         private ShoppingCartPages scp;*/
     private SearchFunctionalityPages sfp;
+    private ReturningUserPurchasePages rup;
     private ItemDetailsVerificationPages idv;
     /*   private UserRegistrationNewPages urnp;
        private TestShippingOptionsPages tsop;*/
@@ -37,7 +39,7 @@ public class PageLibrary {
         nfp = new NewsletterFunctionalityPage();
         sofp = new SubmissionOfFormPage();
         scpqp= new ShoppingCartProductQuantityPages();*/
-
+        rup = new ReturningUserPurchasePages();
     }
 
 /*    public UserRegistrationPages getUrp() {
@@ -72,18 +74,22 @@ public class PageLibrary {
         return amfp;
     }
 
-  /*  public HomePage getHPage() {
-        return hPage;
+    /*  public HomePage getHPage() {
+          return hPage;
+      }
+
+      public LoginFunctionalityPage getLoginFunctionalityPage() {
+          return loginFunctionalityPage;
+      }
+      public FooterLinksPages getFlp(){return flp;}
+      public NewsletterFunctionalityPage getNfp(){return nfp;}
+      public SubmissionOfFormPage getSofp(){return sofp;}
+      public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
+     */
+    public ReturningUserPurchasePages getRup() {
+        return rup;
     }
 
-    public LoginFunctionalityPage getLoginFunctionalityPage() {
-        return loginFunctionalityPage;
-    }
-    public FooterLinksPages getFlp(){return flp;}
-    public NewsletterFunctionalityPage getNfp(){return nfp;}
-    public SubmissionOfFormPage getSofp(){return sofp;}
-    public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
-   */
 }
 
 
