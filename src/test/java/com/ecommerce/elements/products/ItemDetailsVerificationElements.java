@@ -44,9 +44,6 @@ public class ItemDetailsVerificationElements {
     @FindBy(linkText = "Quick view")
     public WebElement quickView;
 
-    @FindBy (css = ".myaccount-link-list>li")
-    public List<WebElement> myPersonalInfoButton;
-
   /*  private String linkText;
     public void setLinkText(String linkText) {
         this.linkText = linkText;

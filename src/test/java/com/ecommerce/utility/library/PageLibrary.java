@@ -2,6 +2,7 @@ package com.ecommerce.utility.library;
 
 
 import com.ecommerce.pages.customeraccounts.AccountManagementFunctionalityPages;
+import com.ecommerce.pages.homepage.NewsletterFunctionalityPages;
 import com.ecommerce.pages.homepage.SearchFunctionalityPages;
 import com.ecommerce.pages.products.ItemDetailsVerificationPages;
 import com.ecommerce.pages.shoppingcart.ReturningUserPurchasePages;
@@ -19,11 +20,15 @@ public class PageLibrary {
     /*   private UserRegistrationNewPages urnp;
        private TestShippingOptionsPages tsop;*/
     private AccountManagementFunctionalityPages amfp;
+
+    private NewsletterFunctionalityPages nfp;
+
     private ShoppingCartProductQuantityPages scpqp;
+
   /*  private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
     private FooterLinksPages flp;
-    private NewsletterFunctionalityPage nfp;
+
     private SubmissionOfFormPage sofp;
     */
 
@@ -38,10 +43,12 @@ public class PageLibrary {
         tsop = new TestShippingOptionsPages();*/
         amfp = new AccountManagementFunctionalityPages();
         scpqp= new ShoppingCartProductQuantityPages();
+        nfp = new NewsletterFunctionalityPages(); 
       /*  hPage=new HomePage();
+
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FooterLinksPages();
-        nfp = new NewsletterFunctionalityPage();
+
         sofp = new SubmissionOfFormPage();
         */
 
@@ -78,6 +85,9 @@ public class PageLibrary {
     public AccountManagementFunctionalityPages getAmfp() {
         return amfp;
     }
+
+    public NewsletterFunctionalityPages getNfp(){return nfp;}
+
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
     public  ReturningUserPurchasePages getRup(){ return rup;}
 
@@ -89,7 +99,7 @@ public class PageLibrary {
         return loginFunctionalityPage;
     }
     public FooterLinksPages getFlp(){return flp;}
-    public NewsletterFunctionalityPage getNfp(){return nfp;}
+
     public SubmissionOfFormPage getSofp(){return sofp;}
 
    */

@@ -98,6 +98,10 @@ public class Utility extends FlowsLibrary {
         Select select = new Select(element);
         select.selectByValue(value);
     }
+    public void selectElementByVisibleText(WebElement element, String value) {
+        Select select = new Select(element);
+        select.selectByVisibleText(value);
+    }
 
     public void selectElementByIndex(WebElement element, int index) {
         Select select = new Select(element);

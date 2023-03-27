@@ -91,7 +91,7 @@ public class Driver {
                     driverPool.set(new FirefoxDriver(new FirefoxOptions().setHeadless(true)));
                     break;
                 case "ie":
-                    if (!System.getProperty("os.name").toLowerCase().contains("mac")) {
+                    if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
                         throw new WebDriverException("Your OS doesn't support Internet Explorer");
                     }
                     WebDriverManager.iedriver().setup();
