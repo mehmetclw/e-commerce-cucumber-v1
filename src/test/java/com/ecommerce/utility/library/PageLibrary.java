@@ -5,13 +5,14 @@ import com.ecommerce.pages.customeraccounts.AccountManagementFunctionalityPages;
 import com.ecommerce.pages.homepage.SearchFunctionalityPages;
 import com.ecommerce.pages.products.ItemDetailsVerificationPages;
 import com.ecommerce.pages.shoppingcart.ReturningUserPurchasePages;
+import com.ecommerce.pages.shoppingcart.ShoppingCartFunctionalityPages;
 import com.ecommerce.pages.shoppingcart.ShoppingCartProductQuantityPages;
 
 public class PageLibrary {
     /*    private UserRegistrationPages urp;
 
-        private TestTheNavigationPages tnp;
-        private ShoppingCartPages scp;*/
+        private TestTheNavigationPages tnp;*/
+        private ShoppingCartFunctionalityPages scp;
     private SearchFunctionalityPages sfp;
     private ReturningUserPurchasePages rup;
     private ItemDetailsVerificationPages idv;
@@ -28,8 +29,9 @@ public class PageLibrary {
 
     public PageLibrary() {
       /*  urp = new UserRegistrationPages();
-        tnp = new TestTheNavigationPages();
-        scp = new ShoppingCartPages();*/
+        tnp = new TestTheNavigationPages();*/
+        scp = new ShoppingCartFunctionalityPages();
+        rup=new ReturningUserPurchasePages();
         sfp = new SearchFunctionalityPages();
         idv = new ItemDetailsVerificationPages();
        /* urnp = new UserRegistrationNewPages();
@@ -51,11 +53,11 @@ public class PageLibrary {
 
     public TestTheNavigationPages getTnp() {
         return tnp;
-    }
-
-    public ShoppingCartPages getScp() {
-        return scp;
     }*/
+
+    public ShoppingCartFunctionalityPages getScp() {
+        return scp;
+    }
 
     public SearchFunctionalityPages getSfp() {
         return sfp;
@@ -77,6 +79,7 @@ public class PageLibrary {
         return amfp;
     }
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
+    public  ReturningUserPurchasePages getRup(){ return rup;}
 
   /*  public HomePage getHPage() {
         return hPage;
