@@ -4,7 +4,7 @@ Feature: As a user
   click on product and verify product details.
 
   Background:
-    Given go to home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+    Given go to home page
     And click on "Sign in" link
     When the user enters following valid credentials as email address and password:
       | email address | abcd@gmail.com |

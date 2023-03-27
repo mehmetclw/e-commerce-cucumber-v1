@@ -2,6 +2,7 @@ package com.ecommerce.utility.library;
 
 
 import com.ecommerce.pages.customeraccounts.AccountManagementFunctionalityPages;
+import com.ecommerce.pages.homepage.NewsletterFunctionalityPages;
 import com.ecommerce.pages.homepage.SearchFunctionalityPages;
 import com.ecommerce.pages.products.ItemDetailsVerificationPages;
 
@@ -15,10 +16,11 @@ public class PageLibrary {
     /*   private UserRegistrationNewPages urnp;
        private TestShippingOptionsPages tsop;*/
     private AccountManagementFunctionalityPages amfp;
+    private NewsletterFunctionalityPages nfp;
   /*  private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
     private FooterLinksPages flp;
-    private NewsletterFunctionalityPage nfp;
+
     private SubmissionOfFormPage sofp;
     private ShoppingCartProductQuantityPages scpqp;*/
 
@@ -31,10 +33,11 @@ public class PageLibrary {
        /* urnp = new UserRegistrationNewPages();
         tsop = new TestShippingOptionsPages();*/
         amfp = new AccountManagementFunctionalityPages();
-      /*  hPage=new HomePage();
+        nfp = new NewsletterFunctionalityPages();
+        /*  hPage=new HomePage();
         loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FooterLinksPages();
-        nfp = new NewsletterFunctionalityPage();
+
         sofp = new SubmissionOfFormPage();
         scpqp= new ShoppingCartProductQuantityPages();*/
 
@@ -71,7 +74,7 @@ public class PageLibrary {
     public AccountManagementFunctionalityPages getAmfp() {
         return amfp;
     }
-
+    public NewsletterFunctionalityPages getNfp(){return nfp;}
   /*  public HomePage getHPage() {
         return hPage;
     }
@@ -80,7 +83,7 @@ public class PageLibrary {
         return loginFunctionalityPage;
     }
     public FooterLinksPages getFlp(){return flp;}
-    public NewsletterFunctionalityPage getNfp(){return nfp;}
+
     public SubmissionOfFormPage getSofp(){return sofp;}
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
    */
