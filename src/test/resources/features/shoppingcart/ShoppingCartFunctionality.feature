@@ -3,7 +3,7 @@ Feature:Shopping Cart Functionality
   Add the product to my cart successfully
 
   Background:To sign in with credentials
-    Given go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
+    Given go to home page
     And click on "Sign in" link
     When the user fills requirement fields with valid credentials
       | email address | johndoe.info67@gmail.com |
@@ -16,7 +16,7 @@ Feature:Shopping Cart Functionality
     And click the first product on page
     When choose number of tshirt, color and size
       | Qty | color  | size |
-      | 2   | orange | M    |
+      | 2   | orange | 2    |
     And click "Add to cart" link
     Then verify if the product added correctly
     """
@@ -39,7 +39,7 @@ Feature:Shopping Cart Functionality
     And click the first product on page
     When choose number of tshirt, color and size
       | Qty | color  | size |
-      | 2   | orange | M    |
+      | 2   | orange | 2    |
     And  click "Add to cart" link
     Then verify if the total price is "$33.02" matching with price that shown on website
 
