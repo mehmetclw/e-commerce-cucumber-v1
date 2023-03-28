@@ -3,7 +3,7 @@ Feature: Account Management Functionality
   I want to check if I am able to see my order history
 
   Background:
-    Given go to home page " https://ecommerce.yosemiteint.com/prestashop/index.php"
+    Given go to home page
     And click on "Sign in" link
     When the user fills requirement fields with valid credentials
       | email address | johndoe.info67@gmail.com |

@@ -1,6 +1,7 @@
 package com.ecommerce.utility;
 
 import com.ecommerce.utility.library.FlowsLibrary;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -63,7 +64,21 @@ public class Utility extends FlowsLibrary {
     public void clickElement(WebElement element) {
         element.click();
     }
-
+    public void clickElementByLinkText(String element){
+        Driver.getDriver().findElement(By.linkText(element)).click();
+    }
+    public void clickElementById(String element){
+        Driver.getDriver().findElement(By.id(element)).click();
+    }
+    public void clickElementByName(String element){
+        Driver.getDriver().findElement(By.name(element)).click();
+    }
+    public void clickElementByClassName(String element){
+        Driver.getDriver().findElement(By.className(element)).click();
+    }
+    public void clickElementButton(String element){
+        Driver.getDriver().findElement(By.xpath("//span[normalize-space()='"+element+"']")).click();
+    }
     public void clickElementWithWait(WebElement element) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(element)).click();
@@ -82,6 +97,10 @@ public class Utility extends FlowsLibrary {
     public void selectElementByValue(WebElement element, String value) {
         Select select = new Select(element);
         select.selectByValue(value);
+    }
+    public void selectElementByVisibleText(WebElement element, String value) {
+        Select select = new Select(element);
+        select.selectByVisibleText(value);
     }
 
     public void selectElementByIndex(WebElement element, int index) {

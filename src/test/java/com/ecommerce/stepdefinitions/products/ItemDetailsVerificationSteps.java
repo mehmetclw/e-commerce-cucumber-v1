@@ -2,6 +2,7 @@ package com.ecommerce.stepdefinitions.products;
 
 import com.ecommerce.elements.products.ItemDetailsVerificationElements;
 import com.ecommerce.stepdefinitions.TestBase;
+import com.ecommerce.utility.ConfigReader;
 import com.ecommerce.utility.Database;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
@@ -20,22 +21,16 @@ import java.util.List;
 public class ItemDetailsVerificationSteps extends TestBase {
     public static String email;
     String iframe;
-
-    @Given("go to home page {string}")
-    public void goToHomePage(String url) {
+    String url = ConfigReader.getProperty("url");
+    @Given("go to home page")
+    public void goToHomePage() {
         getAppLibrary().getFlowsLibrary().navigateToUrl(url);
+       // getAppLibrary().getPage().getIdv().navigateToUrl(url);
     }
 
     @And("click on {string} link")
     public void clickOnLink(String value) {
-        switch (value) {
-            case  "Sign In":
-                getAppLibrary().getPage().getIdv().clickOnLinkSignIn();
-                break;
-            case "Women":
-                getAppLibrary().getPage().getIdv().clickOnLinkWomen();
-                break;
-        }
+        getAppLibrary().getPage().getIdv().clickOnLink(value);
     }
 
     @When("the user enters following valid credentials as email address and password:")
@@ -47,20 +42,18 @@ public class ItemDetailsVerificationSteps extends TestBase {
     }
 
     @And("the user clicks the {string} button")
-    public void theUserClicksTheButton(String singInButton) { //abc
+    public void theUserClicksTheButton(String button) {
         getAppLibrary().getPage().getIdv().iFrameHandle(iframe);
-        getAppLibrary().getPage().getIdv().theUserClicksTheButton();
+        getAppLibrary().getPage().getIdv().theUserClicksTheButton(button);
     }
 
     @And("click the first product on the page")
     public void clickTheFirstProductOnThePage() {
-        System.out.println("iframe first scenario = " + iframe);
         getAppLibrary().getPage().getIdv().clickTheFirstProductOnThePage();
     }
 
     @Then("check the product title {string}")
     public void checkTheProductTitle(String expectedTitle) {
-        System.out.println("iframe = " + iframe);
         getAppLibrary().getPage().getIdv().iFrameHandle(iframe);
         String actualTitle = getAppLibrary().getPage().getIdv().checkTheProductTitle();
         Assert.assertEquals("Assertion Failed", expectedTitle, actualTitle);
@@ -76,7 +69,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     @Then("check the price as {string}")
     public void checkThePriceAsExpecteed(String expectedPrice) {
         getAppLibrary().getPage().getIdv().iFrameHandle(iframe);
-
         String actualPrice = getAppLibrary().getPage().getIdv().checkThePrice();
         Assert.assertEquals("Failed", expectedPrice, actualPrice);
     }
@@ -85,8 +77,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     public void checkTheTextAtCheckoutPageAsExpected(String expectedResult) {
         if (iframe != null) {
             String actualResult = getAppLibrary().getPage().getIdv().checkTheText();
-            System.out.println("expectedResult = " + expectedResult);
-            System.out.println("actualResult = " + actualResult);
             Assert.assertTrue("Failed", actualResult.contains(expectedResult));
         } else {
             String actualResult = getAppLibrary().getPage().getIdv().checkoutCartText();
@@ -98,6 +88,6 @@ public class ItemDetailsVerificationSteps extends TestBase {
     public void clickTheFirstProductSOnThePage(String quickView) {
         this.iframe = quickView;
         getAppLibrary().getPage().getIdv().clickTheFirstProductSOnThePage();
-        Utility.waits(2);
+        Utility.waits(1);
     }
 }
