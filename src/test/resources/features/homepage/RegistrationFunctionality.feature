@@ -7,20 +7,22 @@ Feature: Registration Functionality
     And the user clicks the "Create an account" button
 
   @EC-104
-  Scenario: Enter valid details and check if the user is able to register successfull
+  Scenario: Enter valid details and check if the user is able to register successfully
     And fill the requirements on the page
       | First Name |   Jenifer      |
       | Last Name  |   Tally        |
       | Password   |   123456       |
     And click on the -Sign up for our newsletter!- checkbox
     And the user clicks the "Register" button
-  #  And check the message as expected "your account has been created"
+    Then check the message "Your account has been created."
 
+  
   @EC-105
   Scenario: Enter the invalid details and check if appropriate error message is displayed
     And fill the requirements on the page
-      | First Name | fake   |
+      | First Name | Jenifer  |
       | Password   | 123456 |
     And click on the -Sign up for our newsletter!- checkbox
     And the user clicks the "Register" button
-    #And verify that "there are 3 errors first name,password,invalid date of birth" error message is displayed
+    Then verify that error message is displayed "There is 1 error"
+
