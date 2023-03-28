@@ -4,7 +4,7 @@ Feature: As a user
   click on product and verify product details.
 
   Background:
-    Given go to home page "https://ecommerce.yosemiteint.com/prestashop/index.php"
+    Given go to home page
     And click on "Sign in" link
     When the user enters following valid credentials as email address and password:
       | email address | abcd@gmail.com |
@@ -23,8 +23,9 @@ Feature: As a user
     Then check the price as "$16.51"
     And the user clicks the "Add to cart" button
     Then check the text at checkout page as expected
-    """ Product successfully added to your shopping cart
-				"""
+    """
+    Product successfully added to your shopping cart
+    """
 
   @EC-130
   Scenario: Test the product details from open window
