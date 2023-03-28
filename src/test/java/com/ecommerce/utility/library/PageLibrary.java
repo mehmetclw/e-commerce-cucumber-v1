@@ -2,56 +2,50 @@ package com.ecommerce.utility.library;
 
 
 import com.ecommerce.pages.customeraccounts.AccountManagementFunctionalityPages;
-import com.ecommerce.pages.homepage.NewsletterFunctionalityPages;
+import com.ecommerce.pages.homepage.FooterLinksPages;
 import com.ecommerce.pages.homepage.SearchFunctionalityPages;
 import com.ecommerce.pages.products.ItemDetailsVerificationPages;
 import com.ecommerce.pages.shoppingcart.ReturningUserPurchasePages;
-import com.ecommerce.pages.shoppingcart.ShoppingCartFunctionalityPages;
 import com.ecommerce.pages.shoppingcart.ShoppingCartProductQuantityPages;
 
 public class PageLibrary {
     /*    private UserRegistrationPages urp;
 
-        private TestTheNavigationPages tnp;*/
-        private ShoppingCartFunctionalityPages scp;
+        private TestTheNavigationPages tnp;
+        private ShoppingCartPages scp;*/
     private SearchFunctionalityPages sfp;
     private ReturningUserPurchasePages rup;
     private ItemDetailsVerificationPages idv;
     /*   private UserRegistrationNewPages urnp;
        private TestShippingOptionsPages tsop;*/
     private AccountManagementFunctionalityPages amfp;
-
-    private NewsletterFunctionalityPages nfp;
-
     private ShoppingCartProductQuantityPages scpqp;
-
+    private FooterLinksPages flp;
   /*  private HomePage hPage;
     private LoginFunctionalityPage loginFunctionalityPage;
-    private FooterLinksPages flp;
 
+    private NewsletterFunctionalityPage nfp;
     private SubmissionOfFormPage sofp;
     */
 
     public PageLibrary() {
       /*  urp = new UserRegistrationPages();
-        tnp = new TestTheNavigationPages();*/
-        scp = new ShoppingCartFunctionalityPages();
-        rup=new ReturningUserPurchasePages();
+        tnp = new TestTheNavigationPages();
+        scp = new ShoppingCartPages();*/
         sfp = new SearchFunctionalityPages();
         idv = new ItemDetailsVerificationPages();
        /* urnp = new UserRegistrationNewPages();
         tsop = new TestShippingOptionsPages();*/
         amfp = new AccountManagementFunctionalityPages();
         scpqp= new ShoppingCartProductQuantityPages();
-        nfp = new NewsletterFunctionalityPages(); 
-      /*  hPage=new HomePage();
-
-        loginFunctionalityPage=new LoginFunctionalityPage();
         flp= new FooterLinksPages();
+      /*  hPage=new HomePage();
+        loginFunctionalityPage=new LoginFunctionalityPage();
 
+        nfp = new NewsletterFunctionalityPage();
         sofp = new SubmissionOfFormPage();
         */
-
+       rup= new ReturningUserPurchasePages();
     }
 
 /*    public UserRegistrationPages getUrp() {
@@ -60,11 +54,11 @@ public class PageLibrary {
 
     public TestTheNavigationPages getTnp() {
         return tnp;
-    }*/
-
-    public ShoppingCartFunctionalityPages getScp() {
-        return scp;
     }
+
+    public ShoppingCartPages getScp() {
+        return scp;
+    }*/
 
     public SearchFunctionalityPages getSfp() {
         return sfp;
@@ -85,12 +79,10 @@ public class PageLibrary {
     public AccountManagementFunctionalityPages getAmfp() {
         return amfp;
     }
-
-    public NewsletterFunctionalityPages getNfp(){return nfp;}
-
     public ShoppingCartProductQuantityPages getScpqp(){return scpqp;}
-    public  ReturningUserPurchasePages getRup(){ return rup;}
+    public ReturningUserPurchasePages getRup(){return rup;}
 
+    public FooterLinksPages getFlp(){return flp;}
   /*  public HomePage getHPage() {
         return hPage;
     }
@@ -98,8 +90,8 @@ public class PageLibrary {
     public LoginFunctionalityPage getLoginFunctionalityPage() {
         return loginFunctionalityPage;
     }
-    public FooterLinksPages getFlp(){return flp;}
 
+    public NewsletterFunctionalityPage getNfp(){return nfp;}
     public SubmissionOfFormPage getSofp(){return sofp;}
 
    */
