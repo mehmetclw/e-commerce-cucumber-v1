@@ -19,11 +19,6 @@ import java.util.List;
 
 
 public class SearchFunctionalitySteps extends TestBase {
-    @Given("Go to home page {string}")
-    public void goToHomePage(String url) {
-        getAppLibrary().getFlowsLibrary().navigateToUrl(url);
-    }
-
     @Then("Go to search box type {string}")
     public void goToSearchBoxType(String item) {
         getAppLibrary().getPage().getSfp().goToSearchBox(item);
@@ -34,9 +29,8 @@ public class SearchFunctionalitySteps extends TestBase {
         getAppLibrary().getPage().getSfp().clickSearchButton();
     }
 
-    @Then("verify the search page is displayed")
-    public void verifyTheSearchPageIsDisplayed() {
-        String expectedSearchPageTitle = "Search - My Store";
+    @Then("verify the search page is displayed {string}")
+    public void verifyTheSearchPageIsDisplayed(String expectedSearchPageTitle) {
         String searchPageTitle = getAppLibrary().getPage().getSfp().verifyTheSearchPage();
         Assert.assertEquals("Search page not displayed", expectedSearchPageTitle, searchPageTitle);
 

@@ -32,9 +32,6 @@ public class ReturningUserPurchaseElements {
     @FindBy(xpath = "//a[@title='Pay by check.']")
     public WebElement PayByCheck;
 
-    @FindBy(xpath = "//span[normalize-space()='I confirm my order']")
-    public WebElement ConfirmMyOrderButton;
-
     @FindBy(xpath = "//p[@class=\"alert alert-success\"]")
     public WebElement confirmMessage;
 
