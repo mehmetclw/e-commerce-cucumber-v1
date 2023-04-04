@@ -1,3 +1,4 @@
+@regression
 Feature:Payment Functionality
 
   Background:
@@ -16,13 +17,13 @@ Feature:Payment Functionality
     Then check the agree terms box
     And click proceed to checkout Shipping
 
-  @EC-159
+  @EC-159 @smoke
   Scenario: Pay by check verification
     And click on "Pay by check (order processing will be longer)" link
     When click confirm my order button
     Then the user order is confirmed "Your order on My Store is complete."
 
-  @EC-162
+  @EC-162 @minorRegression
   Scenario: Pay by bank wire verification
     And click on "Pay by bank wire (order processing will be longer)" link
     When click confirm my order button

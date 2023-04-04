@@ -35,7 +35,7 @@ public class Driver {
      */
     private Driver() {
     }
-
+    static DesiredCapabilities caps = new DesiredCapabilities();
     public static WebDriver getDriver() {
 
         //if this thread doesn't have a web Driver yet - create it and add to pool
@@ -52,7 +52,7 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     //WebDriver driver =new ChromeDriver();
-                    DesiredCapabilities caps = new DesiredCapabilities();
+
 
                     /**
                      *We have disabled the cookies in below ChromeOptions
@@ -116,7 +116,8 @@ public class Driver {
                     try {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.setCapability("platform", Platform.ANY);
-                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444//wd/hub"), chromeOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("ec2-3-85-110-184.compute-1.amazonaws.com:4444"), chromeOptions));
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -125,7 +126,7 @@ public class Driver {
                     try {
                         firefoxOptions = new FirefoxOptions();
                         firefoxOptions.setCapability("platform", Platform.ANY);
-                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444//wd/hub"), firefoxOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

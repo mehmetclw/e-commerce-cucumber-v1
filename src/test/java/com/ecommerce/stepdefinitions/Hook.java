@@ -14,7 +14,7 @@ import java.time.Duration;
 public class Hook {
 
     @Before
-    public void setup(Scenario scenario){
+    public void setup(Scenario scenario) {
         System.out.println("Starting scenario: " + scenario.getName());
         System.out.println("Tags: " + scenario.getSourceTagNames());
         Driver.getDriver().manage().window().maximize();
@@ -23,8 +23,16 @@ public class Hook {
     }
 
     @After
-    public void tearDown(Scenario scenario){
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            System.out.println("Test Failed : " + scenario.getName());
+            byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/jpeg", "Failed Test Screenshot:");
+        } else {
+            System.out.println("Clean Up stated");
+        }
         System.out.println("Ending scenario: " + scenario.getName());
         Driver.close();
     }
+
 }

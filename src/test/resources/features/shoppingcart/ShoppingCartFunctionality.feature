@@ -11,7 +11,7 @@ Feature:Shopping Cart Functionality
     And the user clicks the "Sign in" button
     When click on "Women" link
 
-  @EC-128
+  @EC-128 @smoke
   Scenario: Add the product to shopping cart
     And click the first product on page
     When choose number of tshirt, color and size
@@ -23,7 +23,7 @@ Feature:Shopping Cart Functionality
     Your shopping cart contains: 2 products
     """
 
-  @EC-146
+  @EC-146 @sanity
   Scenario: Remove the added product to shopping cart
     Then click the third product on page
     And click "Add to cart" link
@@ -34,7 +34,7 @@ Feature:Shopping Cart Functionality
     Your shopping cart is empty.
     """
 
-  @EC-147
+  @EC-147 @sanity
   Scenario: Verify if added product is calculated correctly
     And click the first product on page
     When choose number of tshirt, color and size

@@ -21,7 +21,6 @@ public class FooterLinksSteps extends TestBase {
 
     @Given("Go to the homepage first {string}")
     public void goToHomePage(String url) {
-
         Driver.getDriver().get(url);
     }
 

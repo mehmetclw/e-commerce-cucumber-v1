@@ -14,7 +14,7 @@ Feature: Returning user purchase
     And the user clicks the "Add to cart" button
     And click proceed to checkout
 
-  @EC-142
+  @EC-142 @smoke
   Scenario:user able to place order successfully
     Then verify the shopping cart have the t-shirt product "Your shopping cart contains: 1 product"
     And check the price of the tshirt is the same as expected price "$16.51"
@@ -29,7 +29,7 @@ Feature: Returning user purchase
     When click confirm my order button
     Then the user order is confirmed "Your order on My Store is complete."
 
-  @EC-143
+  @EC-143 @regression
   Scenario:user able to redirect to confirmation page and get all order details
 
     And click proceed to checkout Summary

@@ -15,7 +15,7 @@ Feature: Account Management Functionality
     And click "Order history and details" on the page
     Then verify that user can see history of order
     """
-    Here are the orders you've placed since your account was created.
+    Here are the orders you've placed since your account was created.....
     """
 
   @EC-149
