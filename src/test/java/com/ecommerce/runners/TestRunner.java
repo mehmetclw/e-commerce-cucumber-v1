@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/ecommerce/stepdefinitions",
         dryRun = false,
-        tags = "@sanity",
+        tags = "@regression",
         plugin = {
                 "html:target/default-cucumber-reports.html",
                 "json:target/cucumber.json",
@@ -20,5 +20,5 @@ import org.junit.runner.RunWith;
         }
 )
 
-public class Runner {
+public class TestRunner {
 }

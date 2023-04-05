@@ -35,7 +35,9 @@ public class Driver {
      */
     private Driver() {
     }
+
     static DesiredCapabilities caps = new DesiredCapabilities();
+
     public static WebDriver getDriver() {
 
         //if this thread doesn't have a web Driver yet - create it and add to pool
@@ -114,9 +116,11 @@ public class Driver {
                     break;
                 case "remote_chrome":
                     try {
-                        ChromeOptions chromeOptions = new ChromeOptions();
-                        chromeOptions.setCapability("platform", Platform.ANY);
-                        driverPool.set(new RemoteWebDriver(new URL("ec2-3-85-110-184.compute-1.amazonaws.com:4444"), chromeOptions));
+                        options = new ChromeOptions();
+                        options.addArguments("--disable-extensions");
+                        options.addArguments("--start-maximized");
+                        options.setCapability("platform", Platform.ANY);
+                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444"), options));
 
                     } catch (Exception e) {
                         e.printStackTrace();

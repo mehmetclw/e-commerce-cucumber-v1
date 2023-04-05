@@ -1,10 +1,15 @@
 package com.ecommerce.pages.customeraccounts;
 
 import com.ecommerce.elements.customeraccounts.AccountManagementFunctionalityElements;
+import com.ecommerce.pages.homepage.NewsletterFunctionalityPages;
 import com.ecommerce.utility.Utility;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 
+
 public class AccountManagementFunctionalityPages extends Utility {
+    private static final Logger logger = LogManager.getLogger(AccountManagementFunctionalityPages.class);
     AccountManagementFunctionalityElements amfe = new AccountManagementFunctionalityElements();
 
     public void clickOnThePage(String historyOfMyOrder) {
@@ -41,7 +46,7 @@ public class AccountManagementFunctionalityPages extends Utility {
     public void verifyIfUserUpdatedPasswordSuccessfully(String expectedText) {
         String actualUpdatedPassword = amfe.checkUpdatedPassword.getText();
         Assert.assertEquals("Confirmation Message not displayed", expectedText, actualUpdatedPassword);
-        System.out.println("passwordUpdated = " + actualUpdatedPassword);
+        logger.info("passwordUpdated = " + actualUpdatedPassword);
         waits(2);
     }
 

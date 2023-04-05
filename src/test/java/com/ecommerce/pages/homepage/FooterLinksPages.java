@@ -4,11 +4,14 @@ import com.ecommerce.elements.homepage.FooterLinksElements;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import io.cucumber.datatable.DataTable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,6 +20,7 @@ import java.util.Set;
 
 public class FooterLinksPages extends Utility {
     FooterLinksElements fle;
+    private static final Logger logger = LogManager.getLogger(FooterLinksPages.class);
 
     public FooterLinksPages() {
         fle = new FooterLinksElements();
@@ -29,7 +33,7 @@ public class FooterLinksPages extends Utility {
     }
     public void openLinksAsANewTabsUnderCategoriesLink(DataTable dt) {
         List<List<String>> credentials = dt.asLists();
-        System.out.println(credentials.get(0).get(1));
+        logger.info(credentials.get(0).get(1));
         Driver.getDriver().navigate();
 
         String parentId = Driver.getDriver().getWindowHandle();
@@ -42,7 +46,7 @@ public class FooterLinksPages extends Utility {
             //a.moveToElement(url).keyDown(Keys.CONTROL).click().build().perform(); //For windows users
             a.moveToElement(url).keyDown(Keys.COMMAND).click().build().perform();
             Set<String> allWindows = Driver.getDriver().getWindowHandles();
-            System.out.println("allWindows = " + allWindows);
+            logger.info("allWindows = " + allWindows);
             Iterator<String> window = allWindows.iterator();
             String parent = window.next();
             while (window.hasNext()) {

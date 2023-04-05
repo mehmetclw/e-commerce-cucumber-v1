@@ -1,10 +1,13 @@
 package com.ecommerce.pages.homepage;
 
 import com.ecommerce.elements.homepage.NewsletterFunctionalityElements;
+import com.ecommerce.stepdefinitions.Hook;
 import com.ecommerce.stepdefinitions.products.ItemDetailsVerificationSteps;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
 import io.cucumber.datatable.DataTable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,6 +16,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import javax.mail.*;
 import javax.mail.internet.MimeMultipart;
@@ -23,6 +27,7 @@ import java.util.*;
 
 public class NewsletterFunctionalityPages extends Utility {
     NewsletterFunctionalityElements nfe;
+    private static final Logger logger = LogManager.getLogger(NewsletterFunctionalityPages.class);
 
     public NewsletterFunctionalityPages() {
         nfe = new NewsletterFunctionalityElements();
@@ -158,15 +163,15 @@ public class NewsletterFunctionalityPages extends Utility {
 
         try {
             Session session = Session.getDefaultInstance(properties);
-            System.out.println("Session created");
+            logger.info("Session created");
             Store store = session.getStore("imap");
-            System.out.println("Store created");
+            logger.info("Store created");
             store.connect("mail.yosemiteint.com", email, password);
-            System.out.println("Connection Done");
+            logger.info("Connection Done");
 
             Folder inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_ONLY);
-            System.out.println("Inbox reached..");
+            logger.info("Inbox reached..");
 
             Message[] messages = inbox.search(new SubjectTerm(newsLetterSubject));
 
@@ -183,9 +188,8 @@ public class NewsletterFunctionalityPages extends Utility {
                 } else {
                     content = message.getContent().toString();
                 }
-
-                System.out.println("Email Subject = " + subject);
-                System.out.println("Email Content = " + content);
+                logger.info("Email Subject = " + subject);
+                logger.info("Email Content = " + content);
             }
 
         } catch (NoSuchProviderException e) {
@@ -210,5 +214,4 @@ public class NewsletterFunctionalityPages extends Utility {
         }
         return result.toString();
     }
-
 }

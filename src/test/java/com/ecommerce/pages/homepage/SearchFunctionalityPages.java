@@ -3,7 +3,9 @@ package com.ecommerce.pages.homepage;
 import com.ecommerce.elements.homepage.SearchFunctionalityElements;
 import com.ecommerce.utility.Driver;
 import com.ecommerce.utility.Utility;
+
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,6 +15,8 @@ import java.util.List;
 
 public class SearchFunctionalityPages extends Utility {
     SearchFunctionalityElements sfe;
+   /* private static final Logger loggers = Logger.getLogger(SearchFunctionalityPages.class);*/
+
 
     public SearchFunctionalityPages() {
         sfe = new SearchFunctionalityElements();
@@ -63,4 +67,13 @@ public class SearchFunctionalityPages extends Utility {
         selectElementByValue(sfe.sortOption,value);
     }
 
+  /*  @Test
+    public void test(){
+        loggers.info("INFO MESSAGE");
+        loggers.warn("WARNING MESSAGE");
+        loggers.error("ERROR MESSAGES");
+        loggers.trace("TRACE MESSAGE");
+        loggers.fatal("FATAL MeSSAGE");
+        loggers.debug("DEBUG MESSAGE");
+    }*/
 }
